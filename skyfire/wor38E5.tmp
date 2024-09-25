@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqrx2kgbww35a"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_4bd0o"]
+[ext_resource type="PackedScene" uid="uid://uhrweuo61uwk" path="res://sky.tscn" id="1_rlwvv"]
+[ext_resource type="PackedScene" uid="uid://bardmf4tgx6pt" path="res://ship.tscn" id="2_16ndo"]
+[ext_resource type="Texture2D" uid="uid://5eltkmo77675" path="res://skyfire_godot/gameover.png" id="4_0oqhf"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_4bd0o")
+
+[node name="Sky" parent="." instance=ExtResource("1_rlwvv")]
+
+[node name="Ship" parent="." instance=ExtResource("2_16ndo")]
+position = Vector2(565, 562)
+
+[node name="EnemyTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="GameOver" type="TextureRect" parent="."]
+visible = false
+offset_left = 428.0
+offset_top = 257.0
+offset_right = 684.0
+offset_bottom = 352.0
+texture = ExtResource("4_0oqhf")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Score" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 8.0
+offset_right = 143.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="Score2" type="Label" parent="."]
+offset_left = 62.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score:"
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

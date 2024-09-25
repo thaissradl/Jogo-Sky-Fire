@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://uhrweuo61uwk"]
+
+[ext_resource type="Shader" path="res://sky.gdshader" id="1_gw1gj"]
+[ext_resource type="Texture2D" uid="uid://dfpmk8a4aah0r" path="res://skyfire_godot/background.png" id="1_u5chg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdn3f"]
+shader = ExtResource("1_gw1gj")
+
+[node name="Sky" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wdn3f")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_u5chg")
